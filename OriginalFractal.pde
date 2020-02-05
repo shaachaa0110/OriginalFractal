@@ -1,21 +1,26 @@
-color backColor = color(48, 139, 206);
-float rad = 300;
+int redness = 250;
+int blueness = 250;
 void setup(){
 	size(600, 600);
 }
 public void draw(){
-	background(backColor);
-	myFractal(300, 300, rad, 147);
+	background(0);
+	myFractal(450, 300, 150, 147);
+	myFractal(150, 300, 150, 147);
+	myFractal(300, 150, 150, 147);
+	myFractal(300, 450, 150, 147);
 }
 public void myFractal(float x, float y, float rad, int greenness){
-	fill(230, greenness, 32);
+	fill(redness, greenness, blueness);
 	ellipse(x, y, rad, rad);
-	if(rad > 5){
-		myFractal(x-rad/2, y, rad/2, greenness + 10);
-		myFractal(x+rad/2, y, rad/2, greenness + 10);
+	if(rad > 10){
+		myFractal(x-rad/2, y, rad/2, greenness + 20);
+		myFractal(x+rad/2, y, rad/2, greenness + 20);
+		myFractal(x, y-rad/2, rad/2, greenness + 20);
+		myFractal(x, y+rad/2, rad/2, greenness + 20);
 	}
 }
 public void mouseDragged(){
-	backColor = color(255 - mouseX/2, 255 - mouseY/2, 206 - mouseX/2);
-	rad = 600 - mouseX;
+	redness = mouseX;
+	blueness = mouseY;
 }
